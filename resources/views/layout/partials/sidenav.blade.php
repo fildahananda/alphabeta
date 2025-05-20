@@ -12,93 +12,44 @@
             <div class="collapse navbar-collapse" id="sidenav-collapse-main">
                 <!-- Nav items -->
                 <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="dashboard.html">
-                            <i class="ni ni-tv-2 text-primary"></i>
-                            <span class="nav-link-text">Dashboard</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="icons.html">
-                            <i class="ni ni-planet text-orange"></i>
-                            <span class="nav-link-text">Icons</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="map.html">
-                            <i class="ni ni-pin-3 text-primary"></i>
-                            <span class="nav-link-text">Google</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="profile.html">
-                            <i class="ni ni-single-02 text-yellow"></i>
-                            <span class="nav-link-text">Profile</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="tables.html">
-                            <i class="ni ni-bullet-list-67 text-default"></i>
-                            <span class="nav-link-text">Tables</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="login.html">
-                            <i class="ni ni-key-25 text-info"></i>
-                            <span class="nav-link-text">Login</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="register.html">
-                            <i class="ni ni-circle-08 text-pink"></i>
-                            <span class="nav-link-text">Register</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="upgrade.html">
-                            <i class="ni ni-send text-dark"></i>
-                            <span class="nav-link-text">Upgrade</span>
-                        </a>
-                    </li>
-                </ul>
-                <!-- Divider -->
-                <hr class="my-3">
-                <!-- Heading -->
-                <h6 class="navbar-heading p-0 text-muted">
-                    <span class="docs-normal">Documentation</span>
-                </h6>
-                <!-- Navigation -->
-                <ul class="navbar-nav mb-md-3">
-                    <li class="nav-item">
-                        <a class="nav-link" href="https://demos.creative-tim.com/argon-dashboard/docs/getting-started/overview.html" target="_blank">
-                            <i class="ni ni-spaceship"></i>
-                            <span class="nav-link-text">Getting started</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="https://demos.creative-tim.com/argon-dashboard/docs/foundation/colors.html" target="_blank">
-                            <i class="ni ni-palette"></i>
-                            <span class="nav-link-text">Foundation</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="https://demos.creative-tim.com/argon-dashboard/docs/components/alerts.html" target="_blank">
-                            <i class="ni ni-ui-04"></i>
-                            <span class="nav-link-text">Components</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="https://demos.creative-tim.com/argon-dashboard/docs/plugins/charts.html" target="_blank">
-                            <i class="ni ni-chart-pie-35"></i>
-                            <span class="nav-link-text">Plugins</span>
-                        </a>
-                    </li>
-{{--                    <li class="nav-item">--}}
-{{--                        <a class="nav-link active active-pro" href="upgrade.html">--}}
-{{--                            <i class="ni ni-send text-dark"></i>--}}
-{{--                            <span class="nav-link-text">Upgrade to PRO</span>--}}
-{{--                        </a>--}}
-{{--                    </li>--}}
+                    @foreach (getMenus() as $menu)
+                        <li class="nav-item">
+                            {{-- <a class="nav-link active" href="dashboard.html">
+                                <i class="ni ni-tv-2 text-primary"></i>
+                                <span class="nav-link-text">Dashboard</span>
+                            </a> --}}
+
+                            <a class="nav-link" data-bs-toggle="collapse" href="#horizontal-menu-{!!str_replace(' ', '-', $menu->name)!!}" role="button" aria-expanded="false" aria-controls="horizontal-menu-{!!str_replace(' ', '-', $menu->name)!!}">
+                                <i class="{{ $menu->icon }}"></i>
+                                <span class="item-name">{{ $menu->name }}</span>
+                                <i class="right-icon">
+                                    <svg class="icon-18" xmlns="http://www.w3.org/2000/svg" width="18" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                                    </svg>
+                                </i>
+                            </a>
+                            <ul class="sub-nav collapse" id="horizontal-menu-{!!str_replace(' ', '-', $menu->name)!!}" data-bs-parent="#sidebar-menu">
+                                @foreach ($menu->sub as $item)
+                                    <li class="nav-item">
+                                        <a class="nav-link " href="{{ url($item->url) }}">
+                                            <i class="{{$item->icon}}"></i>
+                                        {{-- <i class="sidenav-mini-icon"> H </i> --}}
+                                        <span class="item-name"> {{ ($item->name) }} </span>
+                                        </a>
+                                        {{-- <ul class="sub-nav nav-sm flex-column">
+                                            @foreach ($item->sub as $sub)
+                                                <li class="nav-item">
+                                                    <a class="nav-link" href="{{ url($sub->url) }}">
+                                                        <span class="item-name"> {{ $sub->name }} </span>
+                                                    </a>
+                                                </li>
+                                            @endforeach
+                                        </ul> --}}
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </li>
+                    @endforeach
                 </ul>
             </div>
         </div>

@@ -38,7 +38,7 @@
         <i class="mobile-nav-toggle d-xl-none fa fa-bars"></i>
       </nav>
 
-      <a class="btn-getstarted" href="#">Daftar</a>
+      <a class="btn-getstarted" href="/login">Login</a>
 
     </div>
   </header>

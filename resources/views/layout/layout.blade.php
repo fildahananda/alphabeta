@@ -11,7 +11,6 @@
     @include('layout.partials.header')
     <div class="container-fluid mt--6">
         @yield('content')
-        @include('layout.partials.footer')
     </div>
 </div>
 @include('layout.partials.footer-scripts')

@@ -1525,3 +1525,15 @@
     }
    
   }
+
+  .wrapper {
+    position: relative;
+    height: 300px;
+    width: 300px;
+}
+
+.wrapper img {
+  position: absolute;
+  left: 4rem;
+  bottom: 0;
+}

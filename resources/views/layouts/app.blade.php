@@ -40,12 +40,12 @@
         <div id="preloader"></div>
 
         <!-- Vendor JS Files -->
-        <script src="{{asset('assets/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-        <script src="{{asset('assets/php-email-form/validate.js')}}"></script>
+        <script src="{{asset('assets/js/bootstrap.bundle.min.js')}}"></script>
+        <script src="{{asset('assets/js/validate.js')}}"></script>
         <script src="{{asset('assets/aos/aos.js')}}"></script>
         <script src="{{asset('assets/glightbox/js/glightbox.min.js')}}"></script>
-        <script src="{{asset('assets/imagesloaded/imagesloaded.pkgd.min.js')}}"></script>
-        <script src="{{asset('assets/isotope-layout/isotope.pkgd.min.js')}}"></script>
+        <script src="{{asset('assets/js/imagesloaded.pkgd.min.js')}}"></script>
+        <script src="{{asset('assets/js/isotope.pkgd.min.js')}}"></script>
         <script src="{{asset('assets/swiper/swiper-bundle.min.js')}}"></script>
 
         <!-- Main JS File -->
