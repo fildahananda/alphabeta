@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -19,17 +20,11 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::get('/about', function()
-{
+Route::get('/about', function () {
     return view('pages.contact');
 });
-Route::get('/siswa', function()
-{
-    return view('pages.siswa.index');
-});
 
-Route::get('/welcome', function()
-{
+Route::get('/welcome', function () {
     return view('pages.home');
 });
 
@@ -40,12 +35,17 @@ Route::middleware(['guest'])->group(function () {
     Route::post('register', [UserController::class, 'customRegistration'])->name('register.post');
 });
 
-Route::group(['middleware' =>['auth']], function () {
+Route::group(['middleware' => ['auth']], function () {
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::prefix('master')->group(function () {
         Route::get('list-user', [DashboardController::class, 'list_user'])->name('list-user');
     });
 
-    Route::post('signout', [UserController::class, 'logout'])->name('logout');
+    Route::prefix('siswa')->group(function () {
+        Route::get('/', [SiswaController::class, 'index'])->name('siswa.index');
+        Route::get('/create', [SiswaController::class, 'create'])->name('siswa.create');
+        Route::post('store', [SiswaController::class, 'store'])->name('siswa.store');
+    });
 
+    Route::post('signout', [UserController::class, 'logout'])->name('logout');
 });

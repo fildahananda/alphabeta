@@ -35,7 +35,7 @@ class Menu extends Model
             ->join('role_menus', 'menus.id', '=', 'role_menus.id_menu')
             ->where('role_menus.id_role', 1)
             ->select('menus.*', 'id_menu', 'id_role')
-            ->groupby('menus.id', 'menus.name', 'menus.url', 'menus.icon', 'menus.root', 'role_menus.id_menu', 'role_menus.id_role', 'menus.no');
+            ->groupby('menus.id', 'menus.name', 'menus.url', 'menus.icon', 'menus.root', 'role_menus.id_menu', 'role_menus.id_role', 'menus.no', 'menus.created_at', 'menus.updated_at');
     }
 
     public function submenu()
@@ -78,5 +78,4 @@ class Menu extends Model
 
         return $menus;
     }
-
 }
